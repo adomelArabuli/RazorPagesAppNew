@@ -1,0 +1,75 @@
+﻿@page
+@model PizzaShop.Pages.PizzaModel
+@{
+}
+<style>
+    body {
+        background-color: black;
+        color: yellow;
+    }
+
+    .pizza-title {
+        font-size: 20px;
+        color: yellow;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+     .pizza-title:hover {
+            color: #ffcc00;
+    }
+</style>
+<div class="text-center">
+    <div class="mainText">
+        <h1 class="display-4 text-capitalize text-yellow">
+            Great selection of pizzas
+        </h1>
+        <h4 style="font-size= 25px;">Sale - 1 + 1 </h4>
+        <p class="smallText"><i>Only one pizza per order</i></p>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-5 mt-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="~/Images/pizzaParts.png" class="img-fluid mx-auto d-block" />
+                            </div>
+                            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                                <div class="text-center mb-5">
+                                    <h3 class="make-our-own-text" style="color: yellow;">Create your own pizza</h3>
+                                    <p class="make-our-own-text" style="color:yellow;">Make it with our Pizza Builder</p>
+                                    <a class="btn btn-primary btn-lg" asp-page="Forms/CustomPizza">Try now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @foreach (var pizza in Model.fakePizzaDB)
+                {
+                    var imagePath = Url.Content($"~/Images/{pizza.ImageTitle}.png");
+                    <div class="col-4 mb-5">
+                        <form method="post" asp-page="Checkout/Checkout">
+                            <input type="hidden" name="PizzaName" value="@pizza.PizzaName" />
+                            <input type="hidden" name="ImageTitle" value="@pizza.ImageTitle" />
+                            <input type="hidden" name="FinalPrice" value="@pizza.FinalPrice" />
+                            <button type="submit" class="btn btn-link p-0">
+                                <img src="@imagePath" class="w-100" asp-append-version="true" />
+                            </button>
+                        </form>
+                        <br />
+                        <div class="text-center">
+                            <form method="post" asp-page="Checkout/Checkout">
+                                <input type="hidden" name="PizzaName" value="@pizza.PizzaName" />
+                                <input type="hidden" name="ImageTitle" value="@pizza.ImageTitle" />
+                                <input type="hidden" name="FinalPrice" value="@pizza.FinalPrice" />
+                                <button type="submit" class="btn btn-link p-0 pizza-title">
+                                    @pizza.PizzaName
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

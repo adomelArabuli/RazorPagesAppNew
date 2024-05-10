@@ -1,0 +1,166 @@
+﻿@page
+@model PizzaShop.Pages.OrderModel
+
+<html>
+<head>
+    <title>Pizza Orders</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffcc00;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            outline: none;
+        }
+
+            .search-button:hover {
+                background-color: #ffc107;
+            }
+
+        .warning {
+            color: red;
+        }
+
+        .actions-container {
+            display: flex;
+            align-items: center;
+        }
+
+            .actions-container button {
+                margin-left: 10px;
+            }
+
+        .btn-primary {
+            background-color: #ffcc00;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            outline: none;
+        }
+
+            .btn-primary:hover {
+                background-color: #ffc107;
+            }
+
+        .btn-warning {
+            background-color: #f00;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <form method="get">
+                <input type="text" id="search" name="searchString" placeholder="Enter at least 2 letters to search" class="search-input" value="@Request.Query["searchString"]">
+                <button type="submit" class="search-button">Search</button>
+                @if (!string.IsNullOrEmpty(ViewData["SearchError"] as string))
+                {
+                    <div class="warning">@ViewData["SearchError"]</div>
+                }
+            </form>
+        </div>
+
+        <h1>Pizza Orders</h1>
+
+        @if (ViewData["FilteredPizzaOrders"] != null)
+        {
+            <table id="ordersTable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Ingredients</th>
+                        <th style="min-width: 150px;">Actions</th> <!-- Adjusted min-width -->
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var orderViewModel in ViewData["FilteredPizzaOrders"] as List<PizzaShop.Pages.OrderModel.PizzaOrderViewModel>)
+                    {
+                        <tr>
+                            <td>@orderViewModel.Id</td>
+                            <td>@orderViewModel.PizzaName</td>
+                            <td>$@orderViewModel.PizzaPrice</td>
+                            <td>@orderViewModel.Ingredients.ToString()</td>
+                            <td>
+                                <div class="actions-container">
+                                    <a asp-page="./UpdateOrder" asp-route-orderId="@orderViewModel.Id" class="btn-primary">Update</a> <!-- Removed extra btn class -->
+                                    <form method="post" asp-page-handler="Delete">
+                                        <input type="hidden" name="orderId" value="@orderViewModel.Id" />
+                                        <button type="submit" class="btn-primary btn-warning">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No pizza orders found.</p>
+        }
+    </div>
+</body>
+</html>

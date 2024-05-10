@@ -1,0 +1,85 @@
+﻿@page
+@model UpdateOrderModel
+@{
+}
+
+<h1 style="text-align: center;">Edit Pizza Order</h1>
+<style>
+
+
+    form {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+        margin: 0 auto; 
+        text-align: center;
+    }
+
+    h1 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #555;
+        text-align: left;
+    }
+
+    input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        width: calc(100% - 22px);
+        box-sizing: border-box;
+    }
+
+    input[type="checkbox"] {
+        display: inline-block;
+        width: auto;
+        margin-right: 5px;
+    }
+
+    button[type="submit"] {
+        background-color: #ffcc00;
+        color: #333;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: bold;
+        width: calc(100% - 22px);
+        box-sizing: border-box;
+    }
+
+    .ingredient {
+        text-align: center; 
+        margin-bottom: 5px; 
+    }
+</style>
+<form method="post">
+    <input type="hidden" asp-for="OrderId" />
+    <div class="center">
+        <label for="newPizzaName">Update Pizza Name:</label>
+        <input type="text" id="newPizzaName" name="newPizzaName" asp-for="NewPizzaName" />
+    </div>
+
+    <div>
+        @foreach (var ingredient in Model.AllIngredients)
+        {
+            <div>
+                <label>
+                    <input type="checkbox" name="selectedIngredients" value="@ingredient" @(Model.SelectedIngredients.Contains(ingredient) ? "checked" : "") />
+                    @ingredient
+                </label>
+            </div>
+        }
+    </div>
+    <button type="submit">Update Order</button>
+</form>

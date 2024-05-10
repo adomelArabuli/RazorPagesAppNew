@@ -1,0 +1,45 @@
+﻿body {
+    background-color: black;
+    color: yellow;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.align-content-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+.col-3 {
+    width: 300px; 
+    text-align: center;
+}
+
+img {
+    width: 100%; 
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: yellow;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ffc107; 
+}

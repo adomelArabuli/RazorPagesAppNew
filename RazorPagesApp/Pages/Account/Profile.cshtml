@@ -1,0 +1,32 @@
+﻿@page
+@model PizzaShop.Pages.Account.ProfileModel
+@{
+}
+
+<div class="text-center">
+	<h1 class="display-4">Welcome</h1>
+	@if (User.Identity.IsAuthenticated)
+	{
+		var twoFactor = ViewData["TwoFactorEnabled"];
+		if (twoFactor != null && twoFactor.ToString().ToLower() == "true")
+		{
+			<a asp-page="/Account/DisableAuthenticator" class="btn btn-warning">Reset & Remove two factor auth</a>
+		}
+		else
+		{
+			<a asp-page="/Account/EnableAuthenticator" >Setup two factor auth</a>
+		}
+		<br />
+
+		<br />
+
+		@if (User.IsInRole("Admin"))
+		{
+			<h2>Your role is - Admin</h2>
+		}
+		else
+		{
+			<h2>Your role is - User</h2>
+		}
+	}
+</div>

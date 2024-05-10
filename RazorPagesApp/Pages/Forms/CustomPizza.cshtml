@@ -1,0 +1,39 @@
+﻿@page
+@model PizzaShop.Pages.Forms.CustomPizzaModel
+@{
+}
+<link rel="stylesheet" type="text/css" href="~/css/custom.css">
+<style>
+
+</style>
+<body style="background-color: white;">
+    <header>
+        <div class="container">
+            <h1 style="text-align: center;">Create your own pizza</h1>
+        </div>
+    </header>
+
+    <div class="text-center container">
+        <form method="post" class="mx-auto mt-5 mb-5 px-5 pt-5 pb-5 rounded-5 bg-light col-4">
+            <input type="text" asp-for="Pizza.PizzaName" placeholder="Give your pizza a name..." />
+            <br />
+            <div class="ingredients">
+                <label><input type="checkbox" asp-for="Pizza.TomatoSauce" /> Tomato Sauce</label><br>
+                <label><input type="checkbox" asp-for="Pizza.Cheese" /> Cheese</label><br>
+                <label><input type="checkbox" asp-for="Pizza.Pepperoni" /> Pepperoni</label><br>
+                <label><input type="checkbox" asp-for="Pizza.Mushroom" /> Mushroom</label><br>
+                <label><input type="checkbox" asp-for="Pizza.Tuna" /> Tuna</label><br>
+                <label><input type="checkbox" asp-for="Pizza.Ham" /> Ham</label><br>
+                <label><input type="checkbox" asp-for="Pizza.Beef" /> Beef</label><br>
+            </div>
+            <br />
+            <button class="btn btn-primary mt-3" type="submit">Order My Pizza</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 PizzaShop. All rights reserved.</p>
+        </div>
+    </footer>
+</body>

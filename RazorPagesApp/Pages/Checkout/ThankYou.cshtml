@@ -1,0 +1,103 @@
+﻿@page
+@model PizzaShop.Pages.Checkout.ThankYouModel
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thank You!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto; 
+            text-align: center;
+            background-color: black:
+        }
+
+        h1 {
+            color: yellow;
+            font-size: 40px; 
+            margin-bottom: 20px; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: bounce 1s ease infinite alternate;
+        }
+
+
+
+        .thank-you-image {
+            width: 300px; 
+            height: auto;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: pulse 1.5s ease infinite alternate;
+        }
+
+
+
+        .message {
+            background-color: black; 
+            color: yellow; 
+            font-size: 24px; 
+            padding: 20px; 
+            border-radius: 10px; 
+            margin-bottom: 30px; 
+        }
+
+        .back-to-home {
+            text-decoration: none;
+            background-color: yellow; 
+            color: black; 
+            padding: 20px 30px;
+            border-radius: 10px; 
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 40px;
+        }
+        .back-to-home:hover {
+            background-color: yellow;
+        }
+
+        header, footer {
+            background-color: black;
+            color: white;
+        }
+
+        footer {
+            padding: 10px 0;
+            background-color: black;
+            color: white;
+            position: fixed; 
+            bottom: 0; 
+            width: 100%; 
+            text-align: center; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Thank you for ordering pizza with us!</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <img src="/Images/thank-you-image.jpg" alt="Thank You" class="thank-you-image">
+        <p class="message">hope you enjoy your delicious pizza!</p>
+        <a href="/" class="back-to-home">Back to Home</a>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 PizzaShop. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

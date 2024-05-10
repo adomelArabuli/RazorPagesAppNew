@@ -1,0 +1,61 @@
+﻿form {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+    text-align: left;
+    font-size: 15px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: calc(100% - 22px);
+    box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+button[type="submit"] {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    width: calc(100% - 22px);
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.ingredients {
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 14px;
+}

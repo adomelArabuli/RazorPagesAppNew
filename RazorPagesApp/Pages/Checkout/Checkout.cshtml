@@ -1,0 +1,18 @@
+﻿@page
+@model PizzaShop.Pages.Checkout.CheckoutModel
+@{
+}
+<link rel="stylesheet" type="text/css" href="~/css/checkout.css">
+
+<h1 style="text-align: center;">Your order</h1>
+@{
+    var imagePath = "~/Images/" + (Model.ImageTitle + ".png");
+}
+<div class="align-content-center">
+    <div class="col-3 mx-auto mb-5">
+        <img src="~/Images/pizzaParts.png" class="w-100" asp-append-version="true" />
+        <p>Your order for the @Model.PizzaName pizza is ready!</p>
+        <p>Total price: @Model.PizzaPrice</p>
+        <a class="btn alert-primary mt-1 mx-auto" asp-page="ThankYou">Confirm Order</a>
+    </div>
+</div>

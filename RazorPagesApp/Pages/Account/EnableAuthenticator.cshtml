@@ -1,0 +1,30 @@
+﻿@page
+@model PizzaShop.Pages.Account.EnableAuthenticatorModel
+@{
+}
+
+<p>
+	Please enter the code below in your authenticator App.
+</p>
+<p>
+	@Model.Model.Token
+</p>
+<p>
+	Alternatively, scan the QR code below with your phone
+</p>
+<div id="qrCode"></div>
+
+<form method="post">
+	<input hidden asp-for="Model.Token" />
+	<div class="form-group">
+		Enter code : <input type="text" class="form-control" asp-for="Model.Code" />
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts{
+	<script src="~/js/qrcode.js"></script>
+	<script type="text/javascript">
+		new QRCode(document.getElementById("qrCode"), "@Model.Model.QRCodeUrl");
+	</script>
+}
