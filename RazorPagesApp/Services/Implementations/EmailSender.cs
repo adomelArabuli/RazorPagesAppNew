@@ -18,7 +18,7 @@ namespace PizzaShop.Services.Implementations
         {
             var options = _configuration.GetSection("Credentials").Get<EmailSenderOptions>();
 
-            var clien = new SmtpClient("smtp.office365.com", 587)
+            var client = new SmtpClient("smtp.office365.com", 587)
             {
                 EnableSsl = true,
                 UseDefaultCredentials = false,
@@ -32,7 +32,7 @@ namespace PizzaShop.Services.Implementations
 
             mailMessage.IsBodyHtml = true;
 
-            return clien.SendMailAsync(mailMessage);
+            return client.SendMailAsync(mailMessage);
         }
     }
 }
